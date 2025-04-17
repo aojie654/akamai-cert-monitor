@@ -116,9 +116,7 @@ python3 --version
 6. Setup the alias:
    - Unix-like:
      Here is the settings on my mac:
-     - The system variable of AK_TOOLS_HOME in shell means folder of repo.
-     - Already set up the variable.
-     - The path of cps_monitor if ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py:
+     - The path of cps_monitor if /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py:
        1. Check the shell which you are using:
 
           ``` shell
@@ -146,8 +144,7 @@ python3 --version
        3. I was added following lines to `~/.zshrc` for I'm using `zsh` and the source file is `~/.zshrc`:
 
           ``` shell
-          # NOTE: Be sure about the variable is under the `export AK_TOOLS_HOME=....`
-          alias akcm="python3 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py"
+          alias akcm="python3 /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py"
           ```
 
        4. Reopen the Terminal and check the alias works or not:

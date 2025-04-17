@@ -116,9 +116,7 @@ python3 --version
 6. 设置 alias:
    - Unix-like
      以我的环境为例:
-     - repo 对应 Shell 变量为 AK_TOOLS_HOME
-     - 已经设置过该变量
-     - cps_monitor 文件的路径是 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py:
+     - cps_monitor 文件的路径是 /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py:
        1. 查看当前使用的终端:
 
           ``` shell
@@ -146,8 +144,7 @@ python3 --version
        3. 我使用的是 `zsh`, 那么环境变量在 ``~/.zshrc`` 中, 则在 `~/.zshrc` 中添加如下行:
 
           ``` shell
-          # 注意需要放在 `export AK_TOOLS_HOME=....` 下面
-          alias akcm="python3 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py"
+          alias akcm="python3 /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py"
           ```
 
        4. 重新打开 Terminal, 进行一次帮助检查配置是否正确:
