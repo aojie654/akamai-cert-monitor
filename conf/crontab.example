@@ -1,0 +1,5 @@
+# CPS Monitor
+58 06 * * 1-5 rm -f PATH_TO_REPO/output/*
+58 06 * * 1-5 rm -f PATH_TO_REPO/log/*
+59 06 * * 1-5 python3 PATH_TO_REPO/bin/cps_monitor.py -o
+00 07 * * 1-5 python3 PATH_TO_REPO/bin/cps_monitor.py -s
