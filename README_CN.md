@@ -27,7 +27,8 @@ python3 --version
 ## 0x02. 安装步骤
 
 1. 安装 [Python 3.8+](https://www.python.org/downloads/).
-   _**注意**_: Python3 在不同系统中的命令略有不同, Unix-like (Linux/MacOS, 本repo内简称 Unix, 下同) 为 `python3`, Windows 为 `python`, 因此Windows 环境下注意替换命令中的 `python3` 为 `python`.
+   _**注意**_: Python3 在不同系统中的命令略有不同.
+   例如: Unix-like (Linux/MacOS, 本repo内简称 Unix-like, 下同) 为 `python3`, Windows 为 `python`, 因此Windows 环境下注意替换命令中的 `python3` 为 `python`.
    在终端中查看 Python 版本:
 
     ``` shell
@@ -54,7 +55,7 @@ python3 --version
     ```
 
 4. 修改配置文件:
-   - 复制 `08_cps_monitor/conf/conf.example.json` 为 `08_cps_monitor/conf/conf.json`
+   - 复制 `conf/conf.example.json` 为 `conf/conf.json`
    - 样例:
 
     ``` json
@@ -86,10 +87,10 @@ python3 --version
         - name: (String) Account 显示名称. 不要求完全正确, 仅在输出使用.
         - users: (List/Array) 用户列表. 可用以集成其他脚本发送运行结果.
 
-5. 以 cps_monitor.py 路径为 `/Users/user/git/akamai-tools/08_cps_monitor/bin/cps_monitor.py` 为例, 通过以下命令查看 dig 是否运行正常:
+5. 以 cps_monitor.py 路径为 `/Users/user/git/akamai-cert-monitor/bin/cps_monitor.py` 为例, 通过以下命令查看 dig 是否运行正常:
 
    ``` shell
-   python3 /Users/user/git/akamai-tools/08_cps_monitor/bin/cps_monitor.py -h
+   python3 /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py -h
    ```
 
    输出:
@@ -113,11 +114,11 @@ python3 --version
    ```
 
 6. 设置 alias:
-   - Unix
+   - Unix-like
      以我的环境为例:
      - repo 对应 Shell 变量为 AK_TOOLS_HOME
      - 已经设置过该变量
-     - cps_monitor 文件的路径是 ${AK_TOOLS_HOME}/08_cps_monitor/bin/cps_monitor.py:
+     - cps_monitor 文件的路径是 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py:
        1. 查看当前使用的终端:
 
           ``` shell
@@ -146,7 +147,7 @@ python3 --version
 
           ``` shell
           # 注意需要放在 `export AK_TOOLS_HOME=....` 下面
-          alias akcm="python3 ${AK_TOOLS_HOME}/08_cps_monitor/bin/cps_monitor.py"
+          alias akcm="python3 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py"
           ```
 
        4. 重新打开 Terminal, 进行一次帮助检查配置是否正确:
@@ -165,17 +166,17 @@ python3 --version
         输出:
 
         ``` Text
-        C:\Users\shengjyerao\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+        C:\Users\user\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
         ```
 
         这是输出只是指明 PowerShell 通过读取这个文件的内容来加载自定义的内容，应该把自定义配置信息写在这个文件里面，但并不代表这个文件一定存在，没有这个文件时需要手动创建。
 
-     2. 以文件路径 "C:\Users\shengjyerao\git\akamai-tools\08_cps_monitor\bin\cps_monitor.py" 为例。
+     2. 以文件路径 "C:\Users\user\git\akamai-cert-monitor\bin\cps_monitor.py" 为例。
        通过vscode打开上面获取到的 PowerShell 配置文件, 添加以下内容并保存:
 
         ``` PowerShell
         function akcm {
-            python.exe "C:\Users\shengjyerao\git\akamai-tools\08_cps_monitor\bin\cps_monitor.py" $args
+            python.exe "C:\Users\user\git\akamai-cert-monitor\bin\cps_monitor.py" $args
         }
         ```
 
@@ -184,8 +185,6 @@ python3 --version
         ``` PowerShell
         akcm -v
         ```
-
-7. (可选) 配置 Webex Bot, 并将 webex_sender.py 设置为 contab 定时执行.
 
 ## 0x03. 功能菜单
 
@@ -251,9 +250,9 @@ python3 --version
   - 输出:
 
     ``` text
-    init_log; Log folder:/opt/datas/git/akamai-tools/08_cps_monitor/log exist, create skipped.
-    init_log; Log Path is: /opt/datas/git/akamai-tools/08_cps_monitor/log/cps_monitor_20240420.log
-    processor_conf; Conf: /opt/datas/git/akamai-tools/08_cps_monitor/conf/conf.json loaded.
+    init_log; Log folder:/Users/user/git/akamai-cert-monitor/log exist, create skipped.
+    init_log; Log Path is: /Users/user/git/akamai-cert-monitor/log/cps_monitor_20240420.log
+    processor_conf; Conf: /Users/user/git/akamai-cert-monitor/conf/conf.json loaded.
     init_edgerc; Conf: /home/user/.edgerc loaded, Api client section: default
     get_contracts; Add account with contracts: 1-AAAA|Example.com: ['1-C-AAAAA','1-C-AAAAB','1-C-AAAAC']
     get_slot_enrollments; No slots in contract: Example.com|1-C-AAAAA
@@ -262,8 +261,8 @@ python3 --version
     get_slot_enrollments; Add enrollment from contract: Example.com|1-C-AAAAB: 1111112|example.com|renewal|2024-05-30|39
     get_slot_enrollments; There is an exception:  get_slot_enrollments; 400: Example.com|1-C-AAAAC: ApiError(type=Forbidden, title=Invalid Contract, detail=The current contract does not belong to ACG list., source=Contract ID: 1-C-AAAAC)
     processor_slot; Slots processed: 1-AAAA|Example.com
-    result_writer_slot; Output dir: /opt/datas/git/akamai-tools/08_cps_monitor/output exist, create skipped.
-    result_writer_slot; Output JSON: /opt/datas/git/akamai-tools/08_cps_monitor/output/result_20240420.json, CSV: /opt/datas/git/akamai-tools/08_cps_monitor/output/result_20240420.csv.
+    result_writer_slot; Output dir: /Users/user/git/akamai-cert-monitor/output exist, create skipped.
+    result_writer_slot; Output JSON: /Users/user/git/akamai-cert-monitor/output/result_20240420.json, CSV: /Users/user/git/akamai-cert-monitor/output/result_20240420.csv.
     processor_slot; Slot processing end.
     ```
 

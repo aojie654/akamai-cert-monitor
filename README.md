@@ -27,7 +27,8 @@ python3 --version
 ## 0x02. How to install
 
 1. Intall [Python 3.8+](https://www.python.org/downloads/).
-   _**NOTES**_: The command Python3 maybe defferent which depends on the OS you are using. e.g. it's `python3` on Unix-like (Linux/MacOS, Unix for shortly) and `python` on Windoww. Be carefule to replace the command `python3` with `python`.
+   _**NOTES**_: The command Python3 maybe defferent which depends on the OS you are using.
+   e.g. it's `python3` on Unix-like (Linux/MacOS, Unix-like for shortly) and `python` on Windows. Be carefule to replace the command `python3` with `python`.
    Check the version of python:
 
     ``` shell
@@ -54,7 +55,7 @@ python3 --version
     ```
 
 4. Set up the config file:
-   - Copy `08_cps_monitor/conf/conf.example.json` to `08_cps_monitor/conf/conf.json`
+   - Copy `conf/conf.example.json` to `conf/conf.json`
    - Example:
 
     ``` json
@@ -86,10 +87,10 @@ python3 --version
         - name: (String) Account name without exactly match and only use for output.
         - users: (List/Array) User list. Can be use to send the script output to other platforms after integration with other tools.
 
-5. Check the config correctly with command. E.g. the path of cps_monitor.py is `/Users/user/git/akamai-tools/08_cps_monitor/bin/cps_monitor.py`:
+5. Check the config correctly with command. E.g. the path of cps_monitor.py is `/Users/user/git/akamai-cert-monitor/bin/cps_monitor.py`:
 
    ``` shell
-   python3 /Users/user/git/akamai-tools/08_cps_monitor/bin/cps_monitor.py -h
+   python3 /Users/user/git/akamai-cert-monitor/bin/cps_monitor.py -h
    ```
 
    output:
@@ -113,11 +114,11 @@ python3 --version
    ```
 
 6. Setup the alias:
-   - Unix:
+   - Unix-like:
      Here is the settings on my mac:
      - The system variable of AK_TOOLS_HOME in shell means folder of repo.
      - Already set up the variable.
-     - The path of cps_monitor if ${AK_TOOLS_HOME}/08_cps_monitor/bin/cps_monitor.py:
+     - The path of cps_monitor if ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py:
        1. Check the shell which you are using:
 
           ``` shell
@@ -146,7 +147,7 @@ python3 --version
 
           ``` shell
           # NOTE: Be sure about the variable is under the `export AK_TOOLS_HOME=....`
-          alias akcm="python3 ${AK_TOOLS_HOME}/08_cps_monitor/bin/cps_monitor.py"
+          alias akcm="python3 ${AK_TOOLS_HOME}/akamai-cert-monitor/bin/cps_monitor.py"
           ```
 
        4. Reopen the Terminal and check the alias works or not:
@@ -165,16 +166,16 @@ python3 --version
         Output:
 
         ``` Text
-        C:\Users\shengjyerao\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+        C:\Users\user\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
         ```
 
         the output is only let you know the path of the config of Powershell, and you need to create it manualy if it not exist.
 
-     2. E.g. the path of cps_monitor.py is "C:\Users\shengjyerao\git\akamai-tools\08_cps_monitor\bin\cps_monitor.py". We can use vscode to open the file and add the following lines:
+     2. E.g. the path of cps_monitor.py is "C:\Users\user\git\akamai-cert-monitor\bin\cps_monitor.py". We can use vscode to open the file and add the following lines:
 
         ``` PowerShell
         function akcm {
-            python.exe "C:\Users\shengjyerao\git\akamai-tools\08_cps_monitor\bin\cps_monitor.py" $args
+            python.exe "C:\Users\user\git\akamai-cert-monitor\bin\cps_monitor.py" $args
         }
         ```
 
@@ -184,7 +185,6 @@ python3 --version
         akcm -v
         ```
 
-7. (Optional) Set up the Webex Bot, then add webex_sender.py to contab.
 
 ## 0x03. Functions Menu
 
@@ -250,9 +250,9 @@ python3 --version
   - output:
 
     ``` text
-    init_log; Log folder:/opt/datas/git/akamai-tools/08_cps_monitor/log exist, create skipped.
-    init_log; Log Path is: /opt/datas/git/akamai-tools/08_cps_monitor/log/cps_monitor_20240420.log
-    processor_conf; Conf: /opt/datas/git/akamai-tools/08_cps_monitor/conf/conf.json loaded.
+    init_log; Log folder:/Users/user/git/akamai-cert-monitor/log exist, create skipped.
+    init_log; Log Path is: /Users/user/git/akamai-cert-monitor/log/cps_monitor_20240420.log
+    processor_conf; Conf: /Users/user/git/akamai-cert-monitor/conf/conf.json loaded.
     init_edgerc; Conf: /home/user/.edgerc loaded, Api client section: default
     get_contracts; Add account with contracts: 1-AAAA|Example.com: ['1-C-AAAAA','1-C-AAAAB','1-C-AAAAC']
     get_slot_enrollments; No slots in contract: Example.com|1-C-AAAAA
@@ -261,8 +261,8 @@ python3 --version
     get_slot_enrollments; Add enrollment from contract: Example.com|1-C-AAAAB: 1111112|example.com|renewal|2024-05-30|39
     get_slot_enrollments; There is an exception:  get_slot_enrollments; 400: Example.com|1-C-AAAAC: ApiError(type=Forbidden, title=Invalid Contract, detail=The current contract does not belong to ACG list., source=Contract ID: 1-C-AAAAC)
     processor_slot; Slots processed: 1-AAAA|Example.com
-    result_writer_slot; Output dir: /opt/datas/git/akamai-tools/08_cps_monitor/output exist, create skipped.
-    result_writer_slot; Output JSON: /opt/datas/git/akamai-tools/08_cps_monitor/output/result_20240420.json, CSV: /opt/datas/git/akamai-tools/08_cps_monitor/output/result_20240420.csv.
+    result_writer_slot; Output dir: /Users/user/git/akamai-cert-monitor/output exist, create skipped.
+    result_writer_slot; Output JSON: /Users/user/git/akamai-cert-monitor/output/result_20240420.json, CSV: /Users/user/git/akamai-cert-monitor/output/result_20240420.csv.
     processor_slot; Slot processing end.
     ```
 
